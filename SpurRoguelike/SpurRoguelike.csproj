@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D6A7A82-0A7F-4462-9D60-98FB65DB5391}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpurRoguelike</RootNamespace>
+    <AssemblyName>SpurRoguelike</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentCommandLineParser, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BotLoader.cs" />
+    <Compile Include="BotLoaderException.cs" />
+    <Compile Include="ConsoleGUI\ConsoleCharacter.cs" />
+    <Compile Include="ConsoleGUI\ConsoleEventReporter.cs" />
+    <Compile Include="ConsoleGUI\ConsoleGui.cs" />
+    <Compile Include="ConsoleGUI\ConsoleMessage.cs" />
+    <Compile Include="ConsoleGUI\MouseDriver\ConsoleKeyConverter.cs" />
+    <Compile Include="ConsoleGUI\MouseDriver\ConsoleMouseDriver.cs" />
+    <Compile Include="ConsoleGUI\ITextScreen.cs" />
+    <Compile Include="ConsoleGUI\MouseDriver\IClickHandler.cs" />
+    <Compile Include="ConsoleGUI\Panels\CenteredPanel.cs" />
+    <Compile Include="ConsoleGUI\WinApi\ControlKeyState.cs" />
+    <Compile Include="ConsoleGUI\WinApi\EventType.cs" />
+    <Compile Include="ConsoleGUI\WinApi\InputRecord.cs" />
+    <Compile Include="ConsoleGUI\WinApi\KeyEvent.cs" />
+    <Compile Include="ConsoleGUI\WinApi\MouseButtonState.cs" />
+    <Compile Include="ConsoleGUI\WinApi\MouseEvent.cs" />
+    <Compile Include="ConsoleGUI\Panels\MessagePanel.cs" />
+    <Compile Include="ConsoleGUI\Panels\HelpPanel.cs" />
+    <Compile Include="ConsoleGUI\Panels\InfoPanel.cs" />
+    <Compile Include="ConsoleGUI\Panels\MessagesPanel.cs" />
+    <Compile Include="ConsoleGUI\Panels\Panel.cs" />
+    <Compile Include="ConsoleGUI\Panels\LevelViewportPanel.cs" />
+    <Compile Include="ConsoleGUI\Panels\StatsPanel.cs" />
+    <Compile Include="ConsoleGUI\ScreenZone.cs" />
+    <Compile Include="ConsoleGUI\ConsolePlayerController.cs" />
+    <Compile Include="ConsoleGUI\ConsoleRenderer.cs" />
+    <Compile Include="ConsoleGUI\TextScreen\CharAttributeConverter.cs" />
+    <Compile Include="ConsoleGUI\WinApi\CharAttributes.cs" />
+    <Compile Include="ConsoleGUI\WinApi\CharInfo.cs" />
+    <Compile Include="ConsoleGUI\WinApi\Coord.cs" />
+    <Compile Include="ConsoleGUI\WinApi\MouseEventFlags.cs" />
+    <Compile Include="ConsoleGUI\WinApi\SmallRect.cs" />
+    <Compile Include="ConsoleGUI\TextScreen\TextScreen.cs" />
+    <Compile Include="Content\Dimwit.cs" />
+    <Compile Include="Content\ArenaFighter.cs" />
+    <Compile Include="Content\OpenExitTrigger.cs" />
+    <Compile Include="Content\Reptiloid.cs" />
+    <Compile Include="Content\State.cs" />
+    <Compile Include="Generators\ArenaGenerator.cs" />
+    <Compile Include="Generators\ItemClass.cs" />
+    <Compile Include="Generators\ItemClassesGenerator.cs" />
+    <Compile Include="Generators\ItemClassOptions.cs" />
+    <Compile Include="Generators\MonsterClass.cs" />
+    <Compile Include="Generators\MonsterClassesGenerator.cs" />
+    <Compile Include="Generators\MonsterClassOptions.cs" />
+    <Compile Include="Generators\NameGenerator.cs" />
+    <Compile Include="Generators\LevelGenerationSettings.cs" />
+    <Compile Include="Generators\LevelGenerator.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpurRoguelike.Core\SpurRoguelike.Core.csproj">
+      <Project>{a9981d1c-3429-4729-b7f7-7839cc30be00}</Project>
+      <Name>SpurRoguelike.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
