@@ -92,9 +92,9 @@ namespace SpurRoguelike.Core
             }
         }
 
-        public void ProcessMove(Location from, Location to)
+        public void ProcessMove(Entity entity, Location from, Location to)
         {
-            entitiesIndex.Move(from, to);
+            entitiesIndex.Move(entity, from, to);
         }
 
         public Field Field { get; }

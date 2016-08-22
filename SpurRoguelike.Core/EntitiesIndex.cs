@@ -24,13 +24,12 @@ namespace SpurRoguelike.Core
             return location.X >= 0 && location.X < Width && location.Y >= 0 && location.Y < Height;
         }
 
-        public void Move(Location from, Location to)
+        public void Move(Entity entity, Location from, Location to)
         {
-            if (!Contains(from) || !Contains(to))
-                return;
-
-            this[to] = this[from];
-            this[from] = null;
+            if (Contains(to))
+                this[to] = entity;
+            if (Contains(from) && this[from] == entity)
+                this[from] = null;
         }
 
         public int Width => cells.GetLength(0);

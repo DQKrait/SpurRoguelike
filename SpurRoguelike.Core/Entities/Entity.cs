@@ -30,7 +30,7 @@ namespace SpurRoguelike.Core.Entities
 
             Location = newLocation;
 
-            Level?.ProcessMove(oldLocation, Location);
+            Level?.ProcessMove(this, oldLocation, Location);
 
             if (Level != newLevel)
             {
@@ -56,7 +56,6 @@ namespace SpurRoguelike.Core.Entities
         {
             IsDestroyed = true;
             Level.Destroy(this);
-            Location = default(Location);
         }
     }
 }
