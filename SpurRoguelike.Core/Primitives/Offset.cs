@@ -29,6 +29,16 @@ namespace SpurRoguelike.Core.Primitives
             return random.NextDouble() < 0.5 ? new Offset(attackOffset.XOffset, 0) : new Offset(0, attackOffset.YOffset);
         }
 
+        public Offset SnapToStep()
+        {
+            var offset = Normalize();
+
+            if (XOffset == 0 || YOffset == 0)
+                return offset;
+
+            return Math.Abs(offset.XOffset) >= Math.Abs(offset.YOffset) ? new Offset(offset.XOffset, 0) : new Offset(0, offset.YOffset);
+        }
+
         public bool IsStep()
         {
             return Math.Abs(XOffset) == 1 && YOffset == 0 || Math.Abs(YOffset) == 1 && XOffset == 0;
@@ -52,7 +62,7 @@ namespace SpurRoguelike.Core.Primitives
                     xOffset = -clockwise * yOffset;
                     yOffset = 0;
                 }
-                else 
+                else
                 {
                     yOffset = clockwise * xOffset;
                     xOffset = 0;
@@ -69,12 +79,12 @@ namespace SpurRoguelike.Core.Primitives
 
         public static Offset FromDirection(StepDirection stepDirection)
         {
-            return StepOffsets[(int) stepDirection];
+            return StepOffsets[(int)stepDirection];
         }
 
         public static Offset FromDirection(AttackDirection attackDirection)
         {
-            return AttackOffsets[(int) attackDirection];
+            return AttackOffsets[(int)attackDirection];
         }
 
         public static readonly Offset[] StepOffsets = { new Offset(0, -1), new Offset(1, 0), new Offset(0, 1), new Offset(-1, 0) };
@@ -94,7 +104,7 @@ namespace SpurRoguelike.Core.Primitives
         {
             if (ReferenceEquals(null, other))
                 return false;
-            return other is Offset && Equals((Offset) other);
+            return other is Offset && Equals((Offset)other);
         }
 
         public override int GetHashCode()
@@ -113,6 +123,11 @@ namespace SpurRoguelike.Core.Primitives
         public static bool operator !=(Offset left, Offset right)
         {
             return !left.Equals(right);
+        }
+
+        public override string ToString()
+        {
+            return $"X: {XOffset}, Y: {YOffset}";
         }
     }
 }

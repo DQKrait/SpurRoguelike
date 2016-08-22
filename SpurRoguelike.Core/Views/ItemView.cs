@@ -10,9 +10,9 @@ namespace SpurRoguelike.Core.Views
             this.item = item;
         }
 
-        public int AttackBonus => item.AttackBonus;
+        public int AttackBonus => item?.AttackBonus ?? 0;
 
-        public int DefenceBonus => item.DefenceBonus;
+        public int DefenceBonus => item?.DefenceBonus ?? 0;
 
         public Location Location => item.Location;
 
