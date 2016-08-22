@@ -1,5 +1,6 @@
 using System;
 using SpurRoguelike.Core.Primitives;
+using SpurRoguelike.Core.Views;
 
 namespace SpurRoguelike.Core.Entities
 {
@@ -58,6 +59,7 @@ namespace SpurRoguelike.Core.Entities
         {
             IsDestroyed = true;
             Level.Destroy(this);
+            Location = default(Location);
         }
     }
 }
