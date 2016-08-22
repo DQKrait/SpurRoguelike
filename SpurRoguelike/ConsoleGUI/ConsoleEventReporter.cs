@@ -12,6 +12,11 @@ namespace SpurRoguelike.ConsoleGUI
             this.gui = gui;
         }
 
+        public void ReportMessage(string message)
+        {
+            ReportMessage(null, message);
+        }
+
         public void ReportMessage(Entity instigator, string message)
         {
             if (gui.IsOnScreen(instigator))

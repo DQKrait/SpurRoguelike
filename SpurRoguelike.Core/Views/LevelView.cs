@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpurRoguelike.Core.Entities;
+using SpurRoguelike.Core.Primitives;
 
 namespace SpurRoguelike.Core.Views
 {
@@ -22,7 +24,23 @@ namespace SpurRoguelike.Core.Views
         public IEnumerable<HealthPackView> HealthPacks => level?.HealthPacks.Select(hp => hp.CreateView());
 
         public Random Random => level?.Random;
+
         public bool HasValue => level != null;
+
+        public PawnView GetMonsterAt(Location location)
+        {
+            return level?.GetEntity<Monster>(location)?.CreateView() ?? default(PawnView);
+        }
+
+        public ItemView GetItemAt(Location location)
+        {
+            return level?.GetEntity<Item>(location)?.CreateView() ?? default(ItemView);
+        }
+
+        public HealthPackView GetHealthPackAt(Location location)
+        {
+            return level?.GetEntity<HealthPack>(location)?.CreateView() ?? default(HealthPackView);
+        }
 
         private readonly Level level;
     }

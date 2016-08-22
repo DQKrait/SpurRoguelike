@@ -22,9 +22,10 @@ namespace SpurRoguelike.Core.Primitives
         {
             return new Turn(player =>
             {
-                var off = offset.SnapToStep();
-                if (off.XOffset != 0 || off.YOffset != 0)
-                    player.Move(player.Location + off, player.Level);
+                var stepOffset = offset.SnapToStep();
+
+                if (stepOffset.XOffset != 0 || stepOffset.YOffset != 0)
+                    player.Move(player.Location + stepOffset, player.Level);
             });
         }
 
@@ -33,6 +34,25 @@ namespace SpurRoguelike.Core.Primitives
             return new Turn(player =>
             {
                 var targetLocation = player.Location + Offset.FromDirection(direction);
+
+                var target = player.Level.GetEntity<Monster>(targetLocation);
+
+                if (target == null)
+                    return;
+
+                player.PerformAttack(target);
+            });
+        }
+        public static Turn Attack(Offset offset)
+        {
+            return new Turn(player =>
+            {
+                var attackOffset = offset.Normalize();
+
+                if (attackOffset.XOffset == 0 && attackOffset.YOffset == 0)
+                    return;
+
+                var targetLocation = player.Location + attackOffset;
 
                 var target = player.Level.GetEntity<Monster>(targetLocation);
 

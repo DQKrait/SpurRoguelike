@@ -14,10 +14,17 @@ namespace SpurRoguelike.Core.Primitives
 
         public readonly int Y;
 
+        public bool IsInRange(Location other, int range)
+        {
+            var offset = this - other;
+            return Math.Abs(offset.XOffset) <= range && Math.Abs(offset.YOffset) <= range;
+        }
+
         public static Location operator +(Location location, Offset offset)
         {
             return new Location(location.X + offset.XOffset, location.Y + offset.YOffset);
         }
+
         public static Location operator -(Location location, Offset offset)
         {
             return new Location(location.X - offset.XOffset, location.Y - offset.YOffset);

@@ -23,6 +23,9 @@ namespace SpurRoguelike.ConsoleGUI
 
         public bool IsOnScreen(Entity entity)
         {
+            if (entity == null)
+                return true;
+
             return levelViewportPanel.IsOnScreen(entity);
         }
 

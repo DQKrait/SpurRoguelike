@@ -5,6 +5,6 @@ namespace SpurRoguelike.Core
 {
     public interface IPlayerController
     {
-        Turn MakeTurn(LevelView levelView);
+        Turn MakeTurn(LevelView levelView, IMessageReporter messageReporter);
     }
 }

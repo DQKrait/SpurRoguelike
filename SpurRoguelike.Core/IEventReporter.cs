@@ -1,9 +1,10 @@
 using SpurRoguelike.Core.Entities;
 using SpurRoguelike.Core.Primitives;
+using SpurRoguelike.Core.Views;
 
 namespace SpurRoguelike.Core
 {
-    public interface IEventReporter
+    public interface IEventReporter : IMessageReporter
     {
         void ReportMessage(Entity instigator, string message);
         void ReportLevelEnd();

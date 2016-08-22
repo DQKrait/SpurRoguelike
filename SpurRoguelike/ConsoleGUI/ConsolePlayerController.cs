@@ -11,7 +11,7 @@ namespace SpurRoguelike.ConsoleGUI
             this.gui = gui;
         }
 
-        public Turn MakeTurn(LevelView levelView)
+        public Turn MakeTurn(LevelView levelView, IMessageReporter messageReporter)
         {
             var turn = gui.AskPlayerInput();
             if (turn == null)

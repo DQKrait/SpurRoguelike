@@ -1,6 +1,4 @@
-using System;
 using SpurRoguelike.Core.Primitives;
-using SpurRoguelike.Core.Views;
 
 namespace SpurRoguelike.Core.Entities
 {
@@ -46,8 +44,7 @@ namespace SpurRoguelike.Core.Entities
 
         public bool IsInRange(Entity other, int range)
         {
-            var offset = Location - other.Location;
-            return Math.Abs(offset.XOffset) <= range && Math.Abs(offset.YOffset) <= range && !other.IsDestroyed && Level == other.Level;
+            return Location.IsInRange(other.Location, range) && !other.IsDestroyed && Level == other.Level;
         }
 
         protected virtual bool ProcessMove(Location newLocation, Level newLevel)

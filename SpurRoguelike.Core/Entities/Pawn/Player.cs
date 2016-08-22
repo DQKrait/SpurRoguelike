@@ -11,13 +11,11 @@ namespace SpurRoguelike.Core.Entities
             this.playerController = playerController;
         }
 
-        public IEventReporter EventReporter { get; }
-
         public override void Tick()
         {
             base.Tick();
 
-            playerController.MakeTurn(Level.CreateView()).Apply(this);
+            playerController.MakeTurn(Level.CreateView(), EventReporter).Apply(this);
         }
 
         public override void PerformAttack(Pawn victim)
@@ -35,6 +33,8 @@ namespace SpurRoguelike.Core.Entities
                 Upgrade(attackBonus, defenceBonus);
             }
         }
+
+        public IEventReporter EventReporter { get; }
 
         protected override bool ProcessMove(Location newLocation, Level newLevel)
         {
