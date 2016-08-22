@@ -18,6 +18,16 @@ namespace SpurRoguelike.Core.Primitives
             });
         }
 
+        public static Turn Step(Offset offset)
+        {
+            return new Turn(player =>
+            {
+                var off = offset.SnapToStep();
+                if (off.XOffset != 0 || off.YOffset != 0)
+                    player.Move(player.Location + off, player.Level);
+            });
+        }
+
         public static Turn Attack(AttackDirection direction)
         {
             return new Turn(player =>

@@ -37,7 +37,7 @@ namespace SpurRoguelike.Core.Primitives
         {
             if (ReferenceEquals(null, other))
                 return false;
-            return other is Location && Equals((Location) other);
+            return other is Location && Equals((Location)other);
         }
 
         public override int GetHashCode()
@@ -56,6 +56,11 @@ namespace SpurRoguelike.Core.Primitives
         public static bool operator !=(Location left, Location right)
         {
             return !left.Equals(right);
+        }
+
+        public override string ToString()
+        {
+            return $"X: {X}, Y: {Y}";
         }
     }
 }
