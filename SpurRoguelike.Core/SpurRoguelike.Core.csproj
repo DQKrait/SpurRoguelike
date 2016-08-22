@@ -60,6 +60,7 @@
     <Compile Include="Views\FieldView.cs" />
     <Compile Include="Views\HealthPackView.cs" />
     <Compile Include="Views\ItemView.cs" />
+    <Compile Include="Views\IView.cs" />
     <Compile Include="Views\LevelView.cs" />
     <Compile Include="Views\PawnView.cs" />
     <Compile Include="Primitives\Location.cs" />
