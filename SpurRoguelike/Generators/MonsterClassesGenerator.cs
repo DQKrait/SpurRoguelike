@@ -18,7 +18,7 @@ namespace SpurRoguelike.Generators
 
             foreach (var options in monsterClassOptions)
             {
-                var classesToGenerate = (int)Math.Round(Math.Sqrt(random.NextDouble()) * variance);
+                var classesToGenerate = Math.Max(1, (int) Math.Round(Math.Sqrt(random.NextDouble()) * variance));
 
                 for (int i = 0; i < classesToGenerate; i++)
                 {
