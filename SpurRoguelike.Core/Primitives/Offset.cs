@@ -36,7 +36,7 @@ namespace SpurRoguelike.Core.Primitives
             if (XOffset == 0 || YOffset == 0)
                 return offset;
 
-            return Math.Abs(offset.XOffset) >= Math.Abs(offset.YOffset) ? new Offset(offset.XOffset, 0) : new Offset(0, offset.YOffset);
+            return Math.Abs(XOffset) >= Math.Abs(YOffset) ? new Offset(offset.XOffset, 0) : new Offset(0, offset.YOffset);
         }
 
         public bool IsStep()
