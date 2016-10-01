@@ -67,7 +67,7 @@ namespace SpurRoguelike
 
         private static List<Level> GenerateLevels(int seed, int count)
         {
-            count = Math.Max(2, count);
+            count = Math.Min(5, Math.Max(2, count));
 
             var nameGenerator = new NameGenerator(seed);
             var levelGenerator = new LevelGenerator(seed, nameGenerator);
